@@ -28,6 +28,7 @@ public class Service {
             case GameConstants.LADDER:
                 optionName = "Ladder";
                 int tempPosLadder = player.getPosition() + diceValue;
+                
                 if(tempPosLadder <= WINNING_POSITION){
                     player.setPosition(tempPosLadder);
                 }

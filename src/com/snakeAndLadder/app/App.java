@@ -19,5 +19,6 @@ public class App {
         }
 
         System.out.println("Player has won the game!");
+        System.out.println("Total dice rolls to win: " + player.getDiceRollCount());
     }
 }

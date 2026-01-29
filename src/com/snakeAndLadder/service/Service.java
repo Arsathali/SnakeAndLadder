@@ -14,7 +14,9 @@ public class Service {
     public void playTurn(Player player){
         
        int diceValue = DiceUtil.rollDice();
-        System.out.println("Dice rolled: " + diceValue);
+       player.increamentDiceRollCount();
+
+       System.out.println("Dice rolled: " + diceValue + " (Roll #" + player.getDiceRollCount() + ")");
 
         int option = random.nextInt(3); // 0–2
         String optionName = "";

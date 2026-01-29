@@ -8,7 +8,8 @@ import com.snakeAndLadder.util.DiceUtil;
 
 public class Service {
 
-     private final Random random = new Random();
+    private final Random random = new Random();
+    private static final int WINNING_POSITION = 100;
      
     public void playTurn(Player player){
         
@@ -26,16 +27,27 @@ public class Service {
 
             case GameConstants.LADDER:
                 optionName = "Ladder";
-                player.setPosition(player.getPosition() + diceValue);
+                int tempPosLadder = player.getPosition() + diceValue;
+                if(tempPosLadder <= WINNING_POSITION){
+                    player.setPosition(tempPosLadder);
+                }
                 break;
 
             case GameConstants.SNAKE:
                 optionName = "Snake";
-                player.setPosition(player.getPosition() - diceValue);
+                int tempPosSnake = player.getPosition() - diceValue;
+                if(tempPosSnake < 0){
+                    tempPosSnake = 0;
+                }
+                player.setPosition(tempPosSnake);
                 break;
         }
 
         System.out.println("Option: " + optionName);
         System.out.println("Player new position: " + player.getPosition());
+    }
+
+    public boolean hasPlayerWon(Player player){
+        return player.getPosition() == WINNING_POSITION;
     }
 }

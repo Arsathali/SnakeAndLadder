@@ -13,6 +13,11 @@ public class App {
 
         Service service = new Service();
         
-        service.playTurn(player);
+          while (!service.hasPlayerWon(player)) {
+            service.playTurn(player);
+            System.out.println("----------------------------");
+        }
+
+        System.out.println("Player has won the game!");
     }
 }

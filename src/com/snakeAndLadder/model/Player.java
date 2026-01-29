@@ -4,10 +4,12 @@ public class Player {
     
     private int position;
     private int diceRollCount;
+    private String name;
 
-    public Player(){
+    public Player(String name){
         this.position = 0;
         this.diceRollCount = 0;
+        this.name = name;
     }
 
     public int getPosition() {
@@ -24,4 +26,13 @@ public class Player {
     public void increamentDiceRollCount(){
         this.diceRollCount++;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
 }

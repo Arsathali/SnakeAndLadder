@@ -11,12 +11,12 @@ public class Service {
     private final Random random = new Random();
     private static final int WINNING_POSITION = 100;
      
-    public void playTurn(Player player){
+    public boolean playTurn(Player player){
         
        int diceValue = DiceUtil.rollDice();
        player.increamentDiceRollCount();
 
-       System.out.println("Dice rolled: " + diceValue + " (Roll #" + player.getDiceRollCount() + ")");
+       System.out.println(player.getName() +" has Dice rolled is: " + diceValue + " (Roll #" + player.getDiceRollCount() + ")");
 
         int option = random.nextInt(3); // 0–2
         String optionName = "";
@@ -25,7 +25,8 @@ public class Service {
             case GameConstants.NO_PLAY:
                 optionName = "No Play";
                 // position unchanged
-                break;
+                System.out.println(optionName);
+                return false;
 
             case GameConstants.LADDER:
                 optionName = "Ladder";
@@ -33,7 +34,8 @@ public class Service {
                 if(tempPosLadder <= WINNING_POSITION){
                     player.setPosition(tempPosLadder);
                 }
-                break;
+                System.out.println("Ladder");
+                return true;
 
             case GameConstants.SNAKE:
                 optionName = "Snake";
@@ -42,11 +44,11 @@ public class Service {
                     tempPosSnake = 0;
                 }
                 player.setPosition(tempPosSnake);
-                break;
+                System.out.println("Snake");
+                return false;
         }
+        return false;
 
-        System.out.println("Option: " + optionName);
-        System.out.println("Player new position: " + player.getPosition());
     }
 
     public boolean hasPlayerWon(Player player){
